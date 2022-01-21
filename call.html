@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<body>
+<div id="p">
+        <style>
+* {box-sizing: border-box}
+  input[type=text], input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+input[type=text]:focus, input[type=password]:focus {
+  background-color: #ddd;
+
+
+  outline: none;
+}
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+button {
+  background-color: #00112b;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+button:hover {
+  opacity:1;
+}
+.cancelbtn, .signupbtn {
+  float: left;
+  width: 50%;
+}
+.container {
+  padding: 16px;
+}
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+@media screen and (max-width: 300px) {
+  .cancelbtn, .signupbtn {
+    width: 100%;
+  }
+}
+        </style>
+
+<label for="date" >Date </label>
+<input type = "text" id="dat"><br>
+<br>
+<label for="day" >Day </label>
+<input type = "text" id="day" ><br>
+<br>
+<button id= "h" onclick = "pus()" > show</button>
+<p id="dis"> </p>
+<div id ="table"> </p>
+<script>
+const dat = document.getElementById("dat");
+const day = document.getElementById("day");
+function pus(){
+let retrievedObject = localStorage.getItem(day.value+dat.value);
+let abcd = JSON.parse(retrievedObject);
+var html = "<table border= '1|1' >"
+html+= '<thead>';
+html+='<tr>';
+html+='<td>'+ "Num" + '</td>' ;
+html+='<td>'+ "date" + '</td>' ;
+html+='<td>'+ "name" + '</td>' ;
+html+='<td>'+ "product" + '</td>' ;
+html+='<td>'+ "quantity" + '</td>' ;
+html+='</tr>' ;
+html+= '</thead>';
+for (let i = 0 ; i < abcd.length ; i++){
+html+='<tr>';
+html+='<td>'+ (i+1) + '</td>' ;
+html+='<td>'+abcd[i].date + '</td>' ; 
+html+='<td>'+ abcd[i].name + '</td>' ;
+html+='<td>'+ abcd[i].product + '</td>' ;
+html+='<td>'+ abcd[i].quantity + '</td>' ;
+html+='</tr>' ;
+}
+document.getElementById("table").innerHTML = html
+
+//document.getElementById("dis").innerHTML =retrievedObject ;
+}
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+

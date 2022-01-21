@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+	<title>
+	Admin Login
+	</title>
+	<center>
+	<head>
+	<h1 style="color:#08085e;">Fridgy-Notes!</h1>
+<br>
+<br>
+	<h4 style="color:#595499;">Admin Login</h4>
+	</head>
+	<br>
+ <div id="p">
+	<style>
+* {box-sizing: border-box}
+  input[type=text], input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+input[type=text]:focus, input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+button {
+  background-color: #00112b;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+button:hover {
+  opacity:1;
+}
+.cancelbtn, .signupbtn {
+  float: left;
+  width: 50%;
+}
+.container {
+  padding: 16px;
+}
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+@media screen and (max-width: 300px) {
+  .cancelbtn, .signupbtn {
+    width: 100%;
+  }
+} 
+	</style>
+<label for="id" > Admin ID </label>
+	<input type = "text" id="id" ><br>
+<br>
+	<label for="password" > Password </label>
+	<input type = "password" id="password" ><br>
+	<br>
+	<input class="btn" type="submit" value="Login" class="btn" id="button" onClick="hi()">
+</div>
+<script>
+function hi()
+{
+const from = document.getElementById("id").value;
+const to = document.getElementById("password").value;
+if (from === "surfbill" && to === "surf1234")
+{
+console.log("done");
+document.getElementById("p").style.display = "none";
+document.getElementById("demo").innerHTML =( ("<button id= add onclick=bye() > add items </button>" )+"<br>" + ("<button id= user onclick=user() > user </button>" ));
+}
+else
+{
+alert ( "invalid pass and user name");
+}
+}
+function bye()
+{
+console.log("hi");
+location.href = "file:///home/intern_sb/finalproject/user.html"
+}
+function user()
+{
+location.href = "file:///home/intern_sb/finalproject/call.html"
+}
+</script>
+<p id="demo" > </p>
+</center>
+</body>
+</html>
+

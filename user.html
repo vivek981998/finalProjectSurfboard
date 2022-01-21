@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<body>
+<center>
+	<style>
+* {box-sizing: border-box}
+  input[type=text], input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border:overflow;
+
+  background: #f1f1f1;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+  background-color: #ddd;
+
+
+  outline: none;
+}
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+button {
+  background-color: #00112b;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+button:hover {
+  opacity:1;
+}
+.cancelbtn, .signupbtn {
+  float: left;
+  width: 50%;
+}
+}
+.container {
+  padding: 16px;
+}
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+@media screen and (max-width: 300px) {
+  .cancelbtn, .signupbtn {
+    width: 100%;
+  }
+}
+        </style>
+
+
+<br>
+<br>
+<br>
+<label for="date" >Date of stock inflow </label>
+<input type = "text" id="date" ><br>
+<br>
+<label for="product" > Name of the Product </label>
+<input type = "text" id="product" ><br>
+<br>
+<label for="quantity" >Quantity </label>
+<input type = "number" id="quantity" ><br>
+<br>
+<label for="price" > Price/piece </label>
+<input type = "number" id="price" ><br>
+ <br>
+<button type="add" id="d" onclick="stocks()" >Add stock</button>
+<br>
+<br>
+<br>
+<button type="tab" id="h" name ="button" onclick="tab()" >Insert To Table</button>
+<br>
+<br>
+
+<button type="store" id="s" name ="button" onclick="hi()" >store data </button>
+<br>
+</center>
+<br>
+<br>
+<label for="date" >check stock </label>
+<input type = "text" id="dat"><br>
+<br>
+<button id= "h" onclick = "pus()" > show</button>
+<br>
+<br>
+<br>
+<p id="dis"> </p>
+<div id ="tables"> </p>
+<script>
+const day = document.getElementById("date");
+const product = document.getElementById("product");
+const quntity = document.getElementById("quantity");
+const price = document.getElementById("price");
+const dat = document.getElementById("dat");
+const list=[];
+function stocks()
+{
+let object = {
+date : day.value ,
+product : product.value,
+quantity : quantity.value,
+price : price.value,
+}
+list.push(object);
+product.value = "" ; 
+quantity.value = "";
+price.value = "";
+console.log(list);
+}
+function tab(){
+console.log(list);
+var html = "<table border= '1|1' >"
+html+= '<thead>';
+html+='<tr>';
+html+='<td>'+ "Num" + '</td>' ;
+html+='<td>'+ "Stock Inflow" + '</td>' ;
+html+='<td>'+ "Product" + '</td>' ;
+html+='<td>'+ "Quantity" + '</td>' ;
+html+='<td>'+ "Price" + '</td>' ;
+html+='</tr>' ;
+html+= '</thead>';
+for (let i = 0 ; i < list.length ; i++){
+html+='<tr>';
+html+='<td>'+ (i+1) + '</td>' ;
+html+='<td>'+list[i].date + '</td>' ; 
+html+='<td>'+ list[i].product + '</td>' ;
+html+='<td>'+ list[i].quantity + '</td>' ;
+html+='<td>'+ list[i].price + '</td>' ;
+html+='</tr>' ;
+}
+document.getElementById("table").innerHTML = html
+}
+function hi()
+{
+console.log (list);
+
+localStorage.setItem(day.value, JSON.stringify(list));
+
+}
+function pus(){
+let retrievedObject = localStorage.getItem(dat.value);
+let abcd = JSON.parse(retrievedObject);
+var html = "<table border= '1|1' >"
+html+= '<thead>';
+html+='<tr>';
+html+='<td>'+ "Num" + '</td>' ;
+html+='<td>'+ "stock in flow" + '</td>' ;
+html+='<td>'+ "product" + '</td>' ;
+html+='<td>'+ "quantity" + '</td>' ;
+html+='<td>'+ "price" + '</td>' ;
+html+='</tr>' ;
+html+= '</thead>';
+for (let i = 0 ; i < abcd.length ; i++){
+html+='<tr>';
+html+='<td>'+ (i+1) + '</td>' ;
+html+='<td>'+abcd[i].date + '</td>' ; 
+html+='<td>'+ abcd[i].product + '</td>' ;
+html+='<td>'+ abcd[i].quantity + '</td>' ;
+html+='<td>'+ abcd[i].price + '</td>' ;
+html+='</tr>' ;
+}
+document.getElementById("tables").innerHTML = html
+
+//document.getElementById("dis").innerHTML =retrievedObject ;
+}
+
+
+
+</script>
+<center>
+<div id="table"> </div>
+</center>
+
+ <br>
+
+</body>
+</html>

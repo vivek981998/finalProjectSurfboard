@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+	<center>
+	<title>User Page</title>
+	<style>
+	
+        body {font-family:Arial, Helvetica ,sans-serif;background-color:#aaaab3;}
+        .container{
+                color:#8a8a8a;
+}
+	</style>
+	<head class='container'><h1>Consumer Details</h1>
+	<style>
+	 head 
+        .container{
+                color:i#0e0e7d;
+}
+        </style>
+	
+	</head>
+<body> 
+
+<style>
+ {font-family:Arial, Helvetica ,sans-serif;background-color:#2e3ae6;}
+        .container{
+                color:#333333;
+}
+</style>
+<br>
+<br>
+<br>	
+<label for="date" class='container' >Date  </label>
+<input type = "text" id="date" ><br>
+<br>
+<label for="day" class='container'>Day </label>
+<input type = "text" id="on" ><br>
+<br>
+<label for="name" class='container' >  Name </label>
+<input type = "text" id="name" ><br>
+<br>
+<label for="product"class='container' > Product Name </label>
+<input type = "text" id="product" ><br>
+<br>
+<label for="quantity" class='container' > Quantity  </label>
+<input type = "number" id="quantity" ><br>
+ <br>
+<button type="add" id="d" onclick="stocks()" >Submit Details</button>
+<br>
+<br>
+<br>
+
+<button type="tab" id="h" name ="button" onclick="tab()" >Content to table</button>
+<br>
+<br>
+
+<button type="store" id="s" name ="button" onclick="hi()" >Store data </button>
+
+
+<script>
+const day = document.getElementById("date");
+const on = document.getElementById("on");
+const name = document.getElementById("name");
+const product = document.getElementById("product");
+const quantity = document.getElementById("quantity");
+const list=[];
+function stocks()
+{
+if ( name.value === ("ahmad" || "siva" || "pranesh" ) && (product.value !== "") && (quantity.value !== ""))
+{
+let object = {
+date : day.value ,
+name : name.value,
+product : product.value,
+quantity : quantity.value,
+}
+list.push(object);
+name.value = "" ; 
+product.value = "";
+quantity.value = "";
+console.log(list);
+}
+else{
+alert("invalid data");
+}}
+function tab(){
+console.log(list);
+var html = "<table border= '1|1' >"
+html+= '<thead>';
+html+='<tr>';
+html+='<td>'+ "Num" + '</td>' ;
+html+='<td>'+ "date" + '</td>' ;
+html+='<td>'+ "name" + '</td>' ;
+html+='<td>'+ "product" + '</td>' ;
+html+='<td>'+ "quantity" + '</td>' ;
+html+='</tr>' ;
+html+= '</thead>';
+for (let i = 0 ; i < list.length ; i++){
+html+='<tr>';
+html+='<td>'+ (i+1) + '</td>' ;
+html+='<td>'+list[i].date + '</td>' ; 
+html+='<td>'+ list[i].name + '</td>' ;
+html+='<td>'+ list[i].product + '</td>' ;
+html+='<td>'+ list[i].quantity + '</td>' ;
+html+='</tr>' ;
+}
+document.getElementById("table").innerHTML = html
+}
+function hi()
+{
+console.log (list);
+
+localStorage.setItem((on.value + day.value), JSON.stringify(list));
+
+}
+var retrievedObject = localStorage.getItem(on.value + day.value);
+console.log ('retrievedObject: ', JSON.parse(retrievedObject));
+
+</script>
+<div id="table"> </div>
+</center>
+</body>
+</html>
+
